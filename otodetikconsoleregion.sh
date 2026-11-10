@@ -111,8 +111,8 @@ list_deployed_services() {
             MEMORY=$(echo "$DETAILS" | jq -r '.spec.template.spec.containers[0].resources.limits.memory // "1Gi"')
             CPU=$(echo "$DETAILS" | jq -r '.spec.template.spec.containers[0].resources.limits.cpu // "1"')
             BILLING=$(echo "$DETAILS" | jq -r '.spec.template.spec.billingMode // "Instance Based"' | sed 's/_/ /g;s/^./\U&/')
-            MIN_INST=$(echo "$DETAILS" | jq -r '.spec.template.spec.minInstances // "0"')
-            MAX_INST=$(echo "$DETAILS" | jq -r '.spec.template.spec.maxInstances // "1"')
+            MIN_INST=$(echo "$DETAILS" | jq -r '.spec.template.spec.minInstances // "1"')
+            MAX_INST=$(echo "$DETAILS" | jq -r '.spec.template.spec.maxInstances // "2v"')
             CONCURRENCY=$(echo "$DETAILS" | jq -r '.spec.template.spec.containerConcurrency // "300"')
             TIMEOUT=$(echo "$DETAILS" | jq -r '.spec.template.spec.timeoutSeconds // "300"')
 
